@@ -28,7 +28,7 @@ public class Bestillingsliste {
 
 
 
-        // Step 3: Allow the user to select items
+        // Vælg pizzaer
         ArrayList<String> order = new ArrayList<>();
 
         while (true) {
@@ -46,7 +46,7 @@ public class Bestillingsliste {
             }
         }
 
-        // Step 4: Display the order overview
+        // Bestillingsoversigt
         System.out.println("Din ordre:");
         if (order.isEmpty()) {
             System.out.println("Fejl.");
