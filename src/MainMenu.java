@@ -20,7 +20,7 @@ public class MainMenu {
         boolean found = false;
 
         for (int i = 0; i < orders.size(); i++) {
-            if (orders.getOrdreID(i) == orderIDInput) {
+            if (orders.getOrderID(i) == orderIDInput) {
                 orders.remove(i);
                 System.out.println("Order ID: " + orderIDInput + " has been removed from the list");
                 found = true;
