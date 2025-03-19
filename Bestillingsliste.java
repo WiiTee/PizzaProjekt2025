@@ -38,7 +38,7 @@ public class Bestillingsliste {
             if (choice == 0) {
                 break; // Exit the loop if the user enters 0
             } else if (choice > 0 && choice <= Bestillingsliste.size()) {
-                // Add the selected item to the order list
+                // Tilføj pizzaerne til bestillingslisten.
                 order.add(Bestillingsliste.get(choice - 1));
                 System.out.println(Bestillingsliste.get(choice - 1) + " er tilføjet til din ordre.");
             } else {
