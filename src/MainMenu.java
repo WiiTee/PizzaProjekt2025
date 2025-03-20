@@ -24,14 +24,7 @@ public class MainMenu {
             }
         }
         if (!found) {
-                System.out.println("Couldn't find order ID: " + orderIDInput + " on the list.");
-            }
+            System.out.println("Couldn't find order ID: " + orderIDInput + " on the list.");
         }
-
-
-
-
     }
-
-
-
+}
