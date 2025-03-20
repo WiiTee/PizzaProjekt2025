@@ -28,28 +28,28 @@ public class Bestillingsliste {
 
 
 
-        // Vælg pizzaer
+        // Choose pizza
         ArrayList<String> order = new ArrayList<>();
 
         while (true) {
-            System.out.print("Skriv nummer på pizzaen: ");
+            System.out.print("Write the number of the pizza you want to order: ");
             int choice = scanner.nextInt();
 
             if (choice == 0) {
                 break; // Exit the loop if the user enters 0
             } else if (choice > 0 && choice <= Bestillingsliste.size()) {
-                // Tilføj pizzaerne til bestillingslisten.
+                // Add the pizzas to the order list.
                 order.add(Bestillingsliste.get(choice - 1));
-                System.out.println(Bestillingsliste.get(choice - 1) + " er tilføjet til din ordre.");
+                System.out.println(Bestillingsliste.get(choice - 1) + " has been added to your order.");
             } else {
-                System.out.println("Fejl. Prøv igen.");
+                System.out.println("Error, try again.");
             }
         }
 
-        // Bestillingsoversigt
-        System.out.println("Din ordre:");
+        // Order list total
+        System.out.println("Your order:");
         if (order.isEmpty()) {
-            System.out.println("Fejl.");
+            System.out.println("Error.");
         } else {
             for (String item : order) {
                 System.out.println(item);
