@@ -4,6 +4,7 @@ class Pizza {
     private int IDnummer;
     private String name;
     private int price;
+    private int pizzaAmount;
     private ArrayList<Pizza> pizzaListe;
 
     public Pizza() {
@@ -45,7 +46,11 @@ class Pizza {
         this.name = name;
         this.price = price;
     }
-
+    public Pizza(String name, int pizzaAmount, int price){
+        this.name = name;
+        this.pizzaAmount = pizzaAmount;
+        this.price = price;
+    }
     public int getIDnummer() {
         return IDnummer;
     }
@@ -58,6 +63,21 @@ class Pizza {
         return price;
     }
 
+    public int getPizzaAmount() {
+        return pizzaAmount;
+    }
+
+    public ArrayList<Pizza> getPizzaListe() {
+        return pizzaListe;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setPizzaPrice(int price, int index) {
+        this.pizzaListe.get(index-1).price = price;
+    }
 
     public void pizzaToString() {
         for(int i = 0; i < pizzaListe.size(); i++) {
