@@ -26,6 +26,10 @@ public class Order {
     public int getOrderID() {
         return orderID;
     }
+    
+    public LocalTime getOrderTime() {
+        return orderTime;
+    }
 
     public LocalTime getOrderTime() {
         return orderTime;
