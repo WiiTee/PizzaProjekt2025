@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -16,5 +17,20 @@ public class Order {
         this.pickupTime = pickupTime;
         this.listPizza = listPizza;
         this.isComplete = false;
+    }
+
+    public LocalTime getPickupTime() {
+        return pickupTime;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    /*public boolean equals(Object obj){
+        return ((Order) obj).getOrderID() == getOrderID();
+    }*/
+    public int compareTo(Order order){
+        return getPickupTime().compareTo(order.getPickupTime());
     }
 }
