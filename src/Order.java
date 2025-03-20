@@ -31,6 +31,10 @@ public class Order {
         return orderTime;
     }
 
+    public LocalTime getOrderTime() {
+        return orderTime;
+    }
+
     public int compareTo(Order order){
         return getPickupTime().compareTo(order.getPickupTime());
     }
