@@ -1,8 +1,4 @@
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class OrderList {
     private ArrayList<Order> listOrder = new ArrayList<>();
@@ -25,6 +21,4 @@ public class OrderList {
             System.out.println("---------\n");
         }
     }
-
-
 }
