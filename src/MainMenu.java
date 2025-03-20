@@ -10,10 +10,6 @@ public class MainMenu {
         orders = new ArrayList<>();
     }
 
-    public void addOrder(String order) {
-        orders.add(order);
-    }
-
     public void removeOrder() {
         System.out.println("Enter order number you wish to remove");
         int orderIDInput = scanner.nextInt();
@@ -31,13 +27,4 @@ public class MainMenu {
                 System.out.println("Couldn't find order ID: " + orderIDInput + " on the list.");
             }
         }
-
-
-
-
-    }
-
-
-
-
 }
