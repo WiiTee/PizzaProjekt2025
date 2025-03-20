@@ -9,11 +9,13 @@ public class MainMenu {
         orders = new ArrayList<>();
     }*/
 
+
     /*public void addOrder(String order) {
         orders.add(order);
     }*/
 
     public void removeOrder(OrderList orderList) {
+
         System.out.println("Enter order number you wish to remove");
         int orderIDInput = scanner.nextInt();
         boolean found = false;
