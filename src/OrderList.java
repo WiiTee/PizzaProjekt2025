@@ -25,6 +25,4 @@ public class OrderList {
             System.out.println("---------\n");
         }
     }
-
-
 }
