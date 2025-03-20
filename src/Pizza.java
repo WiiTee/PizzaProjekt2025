@@ -1,9 +1,44 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Pizza {
+class Pizza {
     private int IDnummer;
     private String name;
     private int price;
+    private ArrayList<Pizza> pizzaListe;
+
+    public Pizza() {
+        this.pizzaListe = new ArrayList<>();
+        pizzaListe.add(new Pizza(1, "Margherita", 65));
+        pizzaListe.add(new Pizza(2, "Pepperoni Supreme", 99));
+        pizzaListe.add(new Pizza(3, "Hawaii Special", 89));
+        pizzaListe.add(new Pizza(4, "Quattro Formaggi", 50));
+        pizzaListe.add(new Pizza(5, "Prosciutto e Rucola", 45));
+        pizzaListe.add(new Pizza(6, "Diavola", 78));
+        pizzaListe.add(new Pizza(7, "Capricciosa", 69));
+        pizzaListe.add(new Pizza(8, "Vegetariana", 120));
+        pizzaListe.add(new Pizza(9, "BBQ Chicken", 120));
+        pizzaListe.add(new Pizza(10, "Meat Lovers", 89));
+        pizzaListe.add(new Pizza(11, "Tropicana", 90));
+        pizzaListe.add(new Pizza(12, "Napolitana", 98));
+        pizzaListe.add(new Pizza(13, "Tonno e Cipolla", 90));
+        pizzaListe.add(new Pizza(14, "Parma Delight", 110));
+        pizzaListe.add(new Pizza(15, "Mexicana", 85));
+        pizzaListe.add(new Pizza(16, "Gorgonzola Dream", 85));
+        pizzaListe.add(new Pizza(17, "Pesto Passion", 120));
+        pizzaListe.add(new Pizza(18, "Truffle Temptation", 120));
+        pizzaListe.add(new Pizza(19, "Spicy Salami", 55));
+        pizzaListe.add(new Pizza(20, "Buffalo Mozzarella", 120));
+        pizzaListe.add(new Pizza(21, "Carbonara Pizza", 120));
+        pizzaListe.add(new Pizza(22, "Cheesy Bacon", 79));
+        pizzaListe.add(new Pizza(23, "Funghi Speciale", 78));
+        pizzaListe.add(new Pizza(24, "Vesuvio", 76));
+        pizzaListe.add(new Pizza(25, "Pollo e Pesto", 89));
+        pizzaListe.add(new Pizza(26, "Bolognese Pizza", 90));
+        pizzaListe.add(new Pizza(27, "Seafood Sensation", 79));
+        pizzaListe.add(new Pizza(28, "Tartufo Lux", 90));
+        pizzaListe.add(new Pizza(29, "Chili Inferno", 79));
+        pizzaListe.add(new Pizza(30, "Mediterranea", 89));
+    }
 
     public Pizza(int IDnummer, String name, int price) {
         this.IDnummer = IDnummer;
@@ -23,63 +58,16 @@ public class Pizza {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Pizza ID: " + IDnummer + ", Name: " + name + ", Price: " + price + " KR";
+
+    public void pizzaToString() {
+        for(int i = 0; i < pizzaListe.size(); i++) {
+            System.out.println("Pizza ID: " + pizzaListe.get(i).IDnummer + ", Name: " + pizzaListe.get(i).name + ", Price: " + pizzaListe.get(i).price+ " KR");
+        }
     }
 
-    public static void main(String[] args) {
-
-        String[] menu = {"Margherita", "Pepperoni Supreme", "Hawaii Special", "Quattro Formaggi", "Diavola",
-                "Capricciosa", "Vegetariana", "BBQ Chicken", "Meat Lovers", "Tropicana",
-                "Napolitana", "Tonno e Cipolla", "Parma Delight", "Mexicana", "Gorgonzola Dream",
-                "Pesto Passion", "Truffle Temptation", "Spicy Salami", "Buffalo Mozzarella", "Carbonara Pizza",
-                "Cheesy Bacon", "Funghi Speciale", "Vesuvio", "Pollo e Pesto", "Bolognese Pizza",
-                "Seafood Sensation", "Tartufo Lux", "Chili Inferno", "Mediterranea", "Prosciutto e Rucola"};
-
-
-        Pizza[] pizzaListe = new Pizza[menu.length];
-
-
-        for (int i = 0; i < menu.length; i++) {
-            int price = 50 + (i * 5);
-            pizzaListe[i] = new Pizza(i + 1, menu[i], price);
+    public void printPizza(ArrayList<Pizza> arrList) {
+        for (int i = 0; i < arrList.size(); i++);{
+            pizzaToString();
         }
-
-
-        System.out.println("Velkommen til Marios Pizzaria! Her er vores menu:🍕");
-        for (Pizza pizza : pizzaListe) {
-            System.out.println(pizza);
-        }
-
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nIndtast en pizza ID for at vælge en pizza: ");
-
-        if (scanner.hasNextInt()) {
-            int valgtID = scanner.nextInt();
-            Pizza valgtPizza = findPizzaByID(pizzaListe, valgtID);
-
-            if (valgtPizza != null) {
-                System.out.println("Du har valgt: " + valgtPizza);
-            } else {
-                System.out.println("Pizza med ID " + valgtID + " blev ikke fundet.");
-            }
-        } else {
-            System.out.println("Ugyldigt input. Indtast venligst et tal.");
-        }
-
-        scanner.close();
-    }
-
-
-    public static Pizza findPizzaByID(Pizza[] pizzaListe, int id) {
-        for (Pizza pizza : pizzaListe) {
-            if (pizza.getIDnummer() == id) {
-                return pizza;
-            }
-        }
-        return null;
     }
 }
-
