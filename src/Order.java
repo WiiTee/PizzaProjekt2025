@@ -27,9 +27,6 @@ public class Order {
         return orderID;
     }
 
-    /*public boolean equals(Object obj){
-        return ((Order) obj).getOrderID() == getOrderID();
-    }*/
     public int compareTo(Order order){
         return getPickupTime().compareTo(order.getPickupTime());
     }
