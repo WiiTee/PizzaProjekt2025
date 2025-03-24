@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.MediaSize;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,13 +11,8 @@ public class MainMenu {
     OrderHistory orderHistory = new OrderHistory();
 
     public void mainMenu(){
-        ArrayList<Pizza> arr1 = new ArrayList<>();
         ArrayList<Pizza> arr2 = new ArrayList<>();
         ArrayList<Pizza> arr3 = new ArrayList<>();
-
-        arr1.add(new Pizza("Margerita", 4, 65));
-        arr1.add(new Pizza("Vesuvio", 2, 100));
-        arr1.add(new Pizza("Diavola", 1, 150));
 
         arr2.add(new Pizza("Test2", 1, 100));
 
@@ -163,14 +157,12 @@ public class MainMenu {
 
     public int inputInt(){
         Scanner scanner = new Scanner(System.in);
-        int intInput;
 
         return intInput = scanner.nextInt();
     }
 
     public String inputString(){
         Scanner scanner = new Scanner(System.in);
-        String stringInput;
 
         return stringInput = scanner.nextLine();
     }
