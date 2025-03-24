@@ -34,6 +34,10 @@ public class Order {
         return orderTime;
     }
 
+    public int getCustomerPhone() {
+        return customerPhone;
+    }
+
     public ArrayList<Pizza> getListPizza() {
         return listPizza;
     }
@@ -42,6 +46,18 @@ public class Order {
         for(int i = 0; i < listPizza.size(); i++){
             System.out.println(listPizza.get(i).getName() + ": " + listPizza.get(i).getPizzaAmount() + "stk");
         }
+    }
+
+    public int totalCost(){
+        int totalCost = 0;
+        for(int i = 0; i < listPizza.size(); i++){
+            int price = getListPizza().get(i).getPrice();
+            int amount = getListPizza().get(i).getPizzaAmount();
+
+            totalCost = price * amount;
+        }
+
+        return totalCost;
     }
 
     public int compareTo(Order order){

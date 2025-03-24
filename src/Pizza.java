@@ -84,10 +84,4 @@ class Pizza {
             System.out.println("Pizza ID: " + pizzaListe.get(i).IDnummer + ", Name: " + pizzaListe.get(i).name + ", Price: " + pizzaListe.get(i).price+ " KR");
         }
     }
-
-    public void printPizza(ArrayList<Pizza> arrList) {
-        for (int i = 0; i < arrList.size(); i++);{
-            pizzaToString();
-        }
-    }
 }
