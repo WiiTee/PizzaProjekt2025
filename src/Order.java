@@ -8,7 +8,6 @@ public class Order {
     private LocalTime orderTime;
     private LocalTime pickupTime;
     private ArrayList<Pizza> listPizza;
-    private boolean isComplete;
     private static int simpleOrderID = 0;
 
     public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza){
@@ -16,7 +15,6 @@ public class Order {
         this.orderTime = orderTime;
         this.pickupTime = pickupTime;
         this.listPizza = listPizza;
-        this.isComplete = false;
         this.orderID = simpleOrderID;
 
         simpleOrderID++;
@@ -34,14 +32,30 @@ public class Order {
         return orderTime;
     }
 
+    public int getCustomerPhone() {
+        return customerPhone;
+    }
+
     public ArrayList<Pizza> getListPizza() {
         return listPizza;
     }
 
     public void printPizzaList(){
-        for(int i = 0; i < listPizza.size(); i++){
-            System.out.println(listPizza.get(i).getName() + ": " + listPizza.get(i).getPizzaAmount() + "stk");
+        for (Pizza pizza : listPizza) {
+            System.out.println(pizza.getName() + ": " + pizza.getPizzaAmount() + "stk");
         }
+    }
+
+    public int totalCost(){
+        int totalCost = 0;
+        for(int i = 0; i < listPizza.size(); i++){
+            int price = getListPizza().get(i).getPrice();
+            int amount = getListPizza().get(i).getPizzaAmount();
+
+            totalCost += price * amount;
+        }
+
+        return totalCost;
     }
 
     public int compareTo(Order order){
