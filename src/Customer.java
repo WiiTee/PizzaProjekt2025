@@ -1,12 +1,19 @@
+import java.util.ArrayList;
+
 public class Customer {
     private String customerName;
     private int customerPhoneNumber;
-    private boolean customerDiscount;
+    private boolean customerDiscount = true;
 
-    public Customer(String customerName, int customerPhoneNumber, boolean customerDiscount) {
+   private ArrayList<Customer> customers = new ArrayList<>();
+
+    public Customer(String customerName, int customerPhoneNumber) {
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
-        this.customerDiscount = customerDiscount;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
     }
 
     public int getCustomerPhoneNumber() {
@@ -22,7 +29,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer " + customerName + " with phone number: " + customerPhoneNumber + (customerDiscount ? " gets a discount!" : " doesn't get a discount!");
+        return "Customer " + customerName + " with phone number: " + customerPhoneNumber;
     }
 }
 
