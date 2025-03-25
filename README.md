@@ -4,4 +4,6 @@
 - Gruppe 5
 
 #Navne (Fulde navn)
-- Jens Gotfredsen Zakaria El Rrami
+- Jens Gotfredsen
+- Zakaria El Rrami
+- Maria Fogt Rasmussen
