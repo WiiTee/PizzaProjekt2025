@@ -9,13 +9,15 @@ public class Order {
     private LocalTime pickupTime;
     private ArrayList<Pizza> listPizza;
     private static int simpleOrderID = 0;
+    private boolean udbringning;
 
-    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza){
+    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza,boolean udbringning){
         this.customerPhone = customerPhone;
         this.orderTime = orderTime;
         this.pickupTime = pickupTime;
         this.listPizza = listPizza;
         this.orderID = simpleOrderID;
+        this.udbringning = udbringning;
 
         simpleOrderID++;
     }
@@ -38,6 +40,9 @@ public class Order {
 
     public ArrayList<Pizza> getListPizza() {
         return listPizza;
+    }
+    public boolean getUdbringning(){
+        return udbringning;
     }
 
     public void printPizzaList(){

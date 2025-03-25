@@ -135,7 +135,23 @@ public class MainMenu {
             System.out.println("What is your phone number?");
             int phoneNumber = inputInt();
 
-            Order order = new Order(phoneNumber, LocalTime.now(),LocalTime.of(pickupTimeHour, pickupTimeMinutes), arrList);
+            //her får kunden mulighed for udbriningupdate
+            System.out.println("do you want delivery y/n");
+            boolean isudbrining = false;
+
+            boolean udbringning = true;
+            while (udbringning){
+                String udInput = inputString();
+                if (udInput.equals("y") || udInput.equals("Y")){
+                    isudbrining = true;
+                }else if (udInput.equals("n") || udInput.equals("N")){
+                    isudbrining = false;
+                }else{
+                    System.out.println("Write Y/N");
+                }
+            }
+
+            Order order = new Order(phoneNumber, LocalTime.now(),LocalTime.of(pickupTimeHour, pickupTimeMinutes), arrList, isudbrining);
 
             orderList.getListOrder().add(order);
         }
