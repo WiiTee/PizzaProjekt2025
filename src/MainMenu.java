@@ -9,6 +9,7 @@ public class MainMenu {
     boolean isRunning;
     OrderList orderList = new OrderList();
     OrderHistory orderHistory = new OrderHistory();
+    Customer customer;
 
     public void mainMenu(){
         ArrayList<Pizza> arr2 = new ArrayList<>();
@@ -135,7 +136,24 @@ public class MainMenu {
             System.out.println("What is your phone number?");
             int phoneNumber = inputInt();
 
+            Customer matchedCustomer = null;
+            for (Customer customer : customer.getCustomers()) {
+                if (customer.getCustomerPhoneNumber() == phoneNumber) {
+                    matchedCustomer = customer;
+                    break;
+                }
+            }
+
             Order order = new Order(phoneNumber, LocalTime.now(),LocalTime.of(pickupTimeHour, pickupTimeMinutes), arrList);
+
+//            int totalPrice = order.totalCost();
+//
+//            if (matchedCustomer != null) {
+//                System.out.println("This customer gets a 10% discount!");
+//                totalPrice *= 0.9;
+//            }
+//
+//            System.out.println("Total price for this order: " + totalPrice + " kr.");
 
             orderList.getListOrder().add(order);
         }
@@ -162,8 +180,6 @@ public class MainMenu {
         }
     }
 
-    ArrayList<Customer> customers = new ArrayList<>();
-
     public void registerCustomer() {
         System.out.println("Enter customer name");
         String customerName = inputString();
@@ -171,27 +187,19 @@ public class MainMenu {
         System.out.println("Enter customer phone number");
         int customerPhoneNumber = inputInt();
 
-        System.out.println("Does the customer get a discount?" + "\n" +
-                "Type Y for yes, N for no");
-        String discountInput = inputString();
-        boolean customerDiscount;
-
-        if (discountInput.equalsIgnoreCase("y")) {
-            customerDiscount = true;
-        } else {
-            customerDiscount = false;
-        }
-        customers.add(new Customer(customerName, customerPhoneNumber, customerDiscount));
+        customer = new Customer(customerName, customerPhoneNumber);
         System.out.println("Customer added.");
+
+        customer.getCustomers().add(customer);
 
     }
 
     public void showRegisteredCustomers() {
-        if (customers.isEmpty()) {
+        if (customer.getCustomers().isEmpty()) {
             System.out.println("You have no registered customers.");
         } else {
             System.out.println("Registered customers:");
-            for (Customer customer : customers) {
+            for (Customer customer : customer.getCustomers()) {
                 System.out.println(customer);
             }
         }
