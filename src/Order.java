@@ -48,12 +48,14 @@ public class Order {
 
     public int totalCost(){
         int totalCost = 0;
+
         for(int i = 0; i < listPizza.size(); i++){
             int price = getListPizza().get(i).getPrice();
             int amount = getListPizza().get(i).getPizzaAmount();
 
             totalCost += price * amount;
         }
+
 
         return totalCost;
     }
