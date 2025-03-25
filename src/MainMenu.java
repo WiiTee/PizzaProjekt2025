@@ -34,20 +34,25 @@ public class MainMenu {
                 Please select an option from the ones below, using the numbers 1 - 7
                 1. Show list of Pizzas
                 2. Add new order
-                3. Remove an order
-                4. Show list of orders
-                5. Update price of pizza
-                6. See order history
-                7. Quit
+                3. Complete an order
+                4. Remove an order
+                5. Show list of orders
+                6. Update price of pizza
+                7. See order history
+                8. Register customer
+                9. Show registered customers
+                10. Quit
                 """);
+
             intInput = inputInt();
             switch (intInput){
                 case 1 -> pizzaList.pizzaToString();
                 case 2 -> addOrder();
                 case 3 -> removeOrder(orderList, orderHistory);
-                case 4 -> orderList.showOrderList();
-                case 5 -> updatePrice();
-                case 6 -> {
+                case 4 -> System.out.println("Not done yet completeOrder()");
+                case 5 -> orderList.showOrderList();
+                case 6 -> updatePrice();
+                case 7 -> {
                     if(!orderHistory.getListOrder().isEmpty()) {
                         orderHistory.showOrderList();
                         System.out.println("Revenue: " + orderHistory.revenue() + "KR");
@@ -55,7 +60,9 @@ public class MainMenu {
                         System.out.println("There's no previous orders!");
                     }
                 }
-                case 7 -> {
+                case 8 -> registerCustomer();
+                case 9 -> showRegisteredCustomers();
+                case 10 -> {
                     System.out.println("See you next time!");
                     isRunning = false;
                 }
@@ -153,6 +160,42 @@ public class MainMenu {
         if (!found) {
             System.out.println("Couldn't find order ID: " + intInput + " on the list.");
         }
+    }
+
+    ArrayList<Customer> customers = new ArrayList<>();
+
+    public void registerCustomer() {
+        System.out.println("Enter customer name");
+        String customerName = inputString();
+
+        System.out.println("Enter customer phone number");
+        int customerPhoneNumber = inputInt();
+
+        System.out.println("Does the customer get a discount?" + "\n" +
+                "Type Y for yes, N for no");
+        String discountInput = inputString();
+        boolean customerDiscount;
+
+        if (discountInput.equalsIgnoreCase("y")) {
+            customerDiscount = true;
+        } else {
+            customerDiscount = false;
+        }
+        customers.add(new Customer(customerName, customerPhoneNumber, customerDiscount));
+        System.out.println("Customer added.");
+
+    }
+
+    public void showRegisteredCustomers() {
+        if (customers.isEmpty()) {
+            System.out.println("You have no registered customers.");
+        } else {
+            System.out.println("Registered customers:");
+            for (Customer customer : customers) {
+                System.out.println(customer);
+            }
+        }
+
     }
 
     public int inputInt(){
