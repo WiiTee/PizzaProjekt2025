@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Customer {
     private String customerName;
     private int customerPhoneNumber;
-    private boolean customerDiscount = true;
 
    private ArrayList<Customer> customers = new ArrayList<>();
 
@@ -23,9 +22,7 @@ public class Customer {
     public String getCustomerName() {
         return customerName;
     }
-    public boolean getCustomerDiscount() {
-        return customerDiscount;
-    }
+
 
     @Override
     public String toString() {

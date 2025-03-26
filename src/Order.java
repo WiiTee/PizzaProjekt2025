@@ -9,13 +9,15 @@ public class Order {
     private LocalTime pickupTime;
     private ArrayList<Pizza> listPizza;
     private static int simpleOrderID = 0;
+    private boolean discountAdded = false;
 
-    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza){
+    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza, boolean discountAdded){
         this.customerPhone = customerPhone;
         this.orderTime = orderTime;
         this.pickupTime = pickupTime;
         this.listPizza = listPizza;
         this.orderID = simpleOrderID;
+        this.discountAdded = discountAdded;
 
         simpleOrderID++;
     }
@@ -35,6 +37,9 @@ public class Order {
     public int getCustomerPhone() {
         return customerPhone;
     }
+    public boolean discountAdded() {
+        return discountAdded;
+    }
 
     public ArrayList<Pizza> getListPizza() {
         return listPizza;
@@ -44,6 +49,10 @@ public class Order {
         for (Pizza pizza : listPizza) {
             System.out.println(pizza.getName() + ": " + pizza.getPizzaAmount() + "stk");
         }
+    }
+
+    public double addDiscount() {
+        return totalCost() * 0.9;
     }
 
     public int totalCost(){
