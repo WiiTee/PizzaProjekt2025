@@ -9,7 +9,6 @@ public class MainMenu {
     boolean isRunning;
     OrderList orderList = new OrderList();
     OrderHistory orderHistory = new OrderHistory();
-    Customer customer;
 
     ArrayList<Customer> customers = new ArrayList<>();
 
