@@ -14,14 +14,15 @@ public class MainMenu {
     public void mainMenu(){
         ArrayList<Pizza> arr2 = new ArrayList<>();
         ArrayList<Pizza> arr3 = new ArrayList<>();
+        
 
         arr2.add(new Pizza("Test2", 1, 100));
 
         arr3.add(new Pizza("Shit", 2, 100));
 
         //Order order = new Order(12345678, LocalTime.now(), LocalTime.of(11,50), arr1);
-        Order order1 = new Order(87654321, LocalTime.now(), LocalTime.of(10, 50), arr2);
-        Order order2 = new Order(3242, LocalTime.now(), LocalTime.of(13, 50), arr3);
+        Order order1 = new Order(87654321, LocalTime.now(), LocalTime.of(10, 50), arr2, true);
+        Order order2 = new Order(3242, LocalTime.now(), LocalTime.of(13, 50), arr3, false);
 
         //orderList.getListOrder().add(order);
         orderList.getListOrder().add(order1);
@@ -137,23 +138,27 @@ public class MainMenu {
             int phoneNumber = inputInt();
 
             Customer matchedCustomer = null;
-            for (Customer customer : customer.getCustomers()) {
-                if (customer.getCustomerPhoneNumber() == phoneNumber) {
-                    matchedCustomer = customer;
+            for (Customer newCustomer : customer.getCustomers()) {
+                if (newCustomer.getCustomerPhoneNumber() == phoneNumber) {
+                    matchedCustomer = newCustomer;
                     break;
                 }
             }
+            boolean hasDiscount = matchedCustomer != null;
 
-            Order order = new Order(phoneNumber, LocalTime.now(),LocalTime.of(pickupTimeHour, pickupTimeMinutes), arrList);
 
-//            int totalPrice = order.totalCost();
-//
-//            if (matchedCustomer != null) {
-//                System.out.println("This customer gets a 10% discount!");
-//                totalPrice *= 0.9;
-//            }
-//
-//            System.out.println("Total price for this order: " + totalPrice + " kr.");
+            Order order = new Order(phoneNumber, LocalTime.now(),LocalTime.of(pickupTimeHour, pickupTimeMinutes), arrList, hasDiscount);
+
+            double totalPrice;
+
+            if (hasDiscount) {
+                System.out.println("This customer gets a 10% discount!");
+                totalPrice = order.addDiscount();
+            } else {
+                totalPrice = order.totalCost();
+            }
+
+            System.out.println("Total price for this order: " + totalPrice + " kr.");
 
             orderList.getListOrder().add(order);
         }
