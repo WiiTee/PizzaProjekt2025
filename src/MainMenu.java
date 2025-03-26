@@ -11,10 +11,12 @@ public class MainMenu {
     OrderHistory orderHistory = new OrderHistory();
     Customer customer;
 
+    ArrayList<Customer> customers = new ArrayList<>();
+
     public void mainMenu(){
         ArrayList<Pizza> arr2 = new ArrayList<>();
         ArrayList<Pizza> arr3 = new ArrayList<>();
-        
+
 
         arr2.add(new Pizza("Test2", 1, 100));
 
@@ -138,7 +140,7 @@ public class MainMenu {
             int phoneNumber = inputInt();
 
             Customer matchedCustomer = null;
-            for (Customer newCustomer : customer.getCustomers()) {
+            for (Customer newCustomer : customers) {
                 if (newCustomer.getCustomerPhoneNumber() == phoneNumber) {
                     matchedCustomer = newCustomer;
                     break;
@@ -195,16 +197,16 @@ public class MainMenu {
         customer = new Customer(customerName, customerPhoneNumber);
         System.out.println("Customer added.");
 
-        customer.getCustomers().add(customer);
+        customers.add(customer);
 
     }
 
     public void showRegisteredCustomers() {
-        if (customer.getCustomers().isEmpty()) {
+        if (customers.isEmpty()) {
             System.out.println("You have no registered customers.");
         } else {
             System.out.println("Registered customers:");
-            for (Customer customer : customer.getCustomers()) {
+            for (Customer customer : customers) {
                 System.out.println(customer);
             }
         }
