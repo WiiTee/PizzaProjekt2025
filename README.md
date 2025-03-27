@@ -7,6 +7,6 @@
 - Jens Gotfredsen
 - Zakaria El Rrami
 - Maria Fogt Rasmussen
-- Nur citirak
+- Nur 
 - Mona Taherzadeh
 - Arianit Murtezaj
