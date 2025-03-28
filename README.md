@@ -7,7 +7,7 @@
 - Jens Gotfredsen
 - Zakaria El Rrami
 - Maria Fogt Rasmussen
-- Nur Citirak
+- Nur (meci0001)
 - Mona Taherzadeh
 - Arianit Murtezaj
 - Frederik Byriel Husegaard
