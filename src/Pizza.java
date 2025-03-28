@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
 class Pizza {
-    private int IDnummer;
-    private String name;
-    private int price;
+    private int pizzaID;
+    private String pizzaName;
+    private int pizzaPrice;
     private int pizzaAmount;
     private ArrayList<Pizza> pizzaListe;
 
+    //Sætter pizza objekter op og tilføjer alle pizzaer til arraylisten der laver menuen
     public Pizza() {
         this.pizzaListe = new ArrayList<>();
         pizzaListe.add(new Pizza(1, "Margherita", 65));
@@ -41,26 +42,29 @@ class Pizza {
         pizzaListe.add(new Pizza(30, "Mediterranea", 89));
     }
 
-    public Pizza(int IDnummer, String name, int price) {
-        this.IDnummer = IDnummer;
-        this.name = name;
-        this.price = price;
+    //Konstruktør til at oprette Pizza menu pizzaer
+    public Pizza(int pizzaID, String pizzaName, int pizzaPrice) {
+        this.pizzaID = pizzaID;
+        this.pizzaName = pizzaName;
+        this.pizzaPrice = pizzaPrice;
     }
-    public Pizza(String name, int pizzaAmount, int price){
-        this.name = name;
+
+    //Konstruktør til at oprette Pizza ordrer
+    public Pizza(String pizzaName, int pizzaAmount, int pizzaPrice){
+        this.pizzaName = pizzaName;
         this.pizzaAmount = pizzaAmount;
-        this.price = price;
+        this.pizzaPrice = pizzaPrice;
     }
-    public int getIDnummer() {
-        return IDnummer;
-    }
-
-    public String getName() {
-        return name;
+    public int getPizzaID() {
+        return pizzaID;
     }
 
-    public int getPrice() {
-        return price;
+    public String getPizzaName() {
+        return pizzaName;
+    }
+
+    public int getPizzaPrice() {
+        return pizzaPrice;
     }
 
     public int getPizzaAmount() {
@@ -71,17 +75,19 @@ class Pizza {
         return pizzaListe;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPizzaAmount(int pizzaAmount) {
+        this.pizzaAmount = pizzaAmount;
     }
 
+    //Sætter pizza prisen via et index og pris den får passet via parametre
     public void setPizzaPrice(int price, int index) {
-        this.pizzaListe.get(index-1).price = price;
+        this.pizzaListe.get(index-1).pizzaPrice = price;
     }
 
-    public void pizzaToString() {
-        for(int i = 0; i < pizzaListe.size(); i++) {
-            System.out.println("Pizza ID: " + pizzaListe.get(i).IDnummer + ", Name: " + pizzaListe.get(i).name + ", Price: " + pizzaListe.get(i).price+ " KR");
+    //Printer Pizza listen fra arraylisten.
+    public void printPizzaList() {
+        for (Pizza pizza : pizzaListe) {
+            System.out.println("Nr: " + pizza.pizzaID + ", Name: " + pizza.pizzaName + ", Price: " + pizza.pizzaPrice + " KR");
         }
     }
 }

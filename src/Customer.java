@@ -10,7 +10,6 @@ public class Customer {
         this.customerPhoneNumber = customerPhoneNumber;
     }
 
-
     public int getCustomerPhoneNumber() {
         return customerPhoneNumber;
     }
