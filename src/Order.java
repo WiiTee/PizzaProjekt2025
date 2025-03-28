@@ -1,4 +1,3 @@
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -9,10 +8,25 @@ public class Order {
     private LocalTime pickupTime;
     private ArrayList<Pizza> listPizza;
     private static int simpleOrderID = 0;
-    private boolean discountAdded = false;
+    private boolean discountAdded;
+    private Customer customer;
+    private boolean isDelivered;
 
-    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza, boolean discountAdded){
+    public Order(int customerPhone, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza, boolean discountAdded, boolean isDelivered){
         this.customerPhone = customerPhone;
+        this.orderTime = orderTime;
+        this.pickupTime = pickupTime;
+        this.listPizza = listPizza;
+        this.orderID = simpleOrderID;
+        this.discountAdded = discountAdded;
+        this.isDelivered = isDelivered;
+
+
+        simpleOrderID++;
+    }
+
+    public Order(Customer customer, LocalTime orderTime, LocalTime pickupTime, ArrayList<Pizza> listPizza, boolean discountAdded){
+        this.customer = customer;
         this.orderTime = orderTime;
         this.pickupTime = pickupTime;
         this.listPizza = listPizza;
@@ -37,29 +51,40 @@ public class Order {
     public int getCustomerPhone() {
         return customerPhone;
     }
-    public boolean discountAdded() {
+    public boolean getDiscountAdded() {
         return discountAdded;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public ArrayList<Pizza> getListPizza() {
         return listPizza;
     }
 
+    public boolean getIsDelivered() {
+        return isDelivered;
+    }
+
+    //Printer listen af pizzaer gemt i ordren
     public void printPizzaList(){
         for (Pizza pizza : listPizza) {
-            System.out.println(pizza.getName() + ": " + pizza.getPizzaAmount() + "stk");
+            System.out.println(pizza.getPizzaName() + ": " + pizza.getPizzaAmount() + "stk");
         }
     }
 
+    //tilføjer discount
     public double addDiscount() {
         return totalCost() * 0.9;
     }
 
+    //Finder prisen for ordren
     public int totalCost(){
         int totalCost = 0;
 
         for(int i = 0; i < listPizza.size(); i++){
-            int price = getListPizza().get(i).getPrice();
+            int price = getListPizza().get(i).getPizzaPrice();
             int amount = getListPizza().get(i).getPizzaAmount();
 
             totalCost += price * amount;
@@ -69,6 +94,7 @@ public class Order {
         return totalCost;
     }
 
+    //Comparator der tager det forrige objekt og sammenligner med det nuværende.
     public int compareTo(Order order){
         return getPickupTime().compareTo(order.getPickupTime());
     }
